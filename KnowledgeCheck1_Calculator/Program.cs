@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,6 +33,13 @@ namespace KnowledgeCheck1_Calculator
                     {
                         Console.WriteLine("One or more of the numbers is not an int");
                     }
+
+                    /*int[] addNums = new int[2];
+                    addNums = getNums();
+
+                    Console.Write($"{addNums[0]} + {addNums[1]} = ");
+                    Console.Write(calculator.Add(addNums[0], addNums[1]));*/
+
                     break;
 
                 case "2":
@@ -48,10 +56,37 @@ namespace KnowledgeCheck1_Calculator
                     {
                         Console.WriteLine("One or more of the numbers is not an int");
                     }
+
+                    /*int[] subNums = getNums();
+
+                    Console.Write($"{subNums[0]} - {subNums[1]} = ");
+                    Console.Write(calculator.Subtract(subNums[0], subNums[1]));*/
+
+
                     break;
 
                 case "3":
                     // Add code here
+
+                    Console.WriteLine("Enter 2 integers to multiply");
+                    var multNumber1 = Console.ReadLine();
+                    var multNumber2 = Console.ReadLine();
+
+                    if (int.TryParse(multNumber1, out int multNumOne) && int.TryParse(multNumber2, out int multNumTwo))
+                    {
+                        Console.Write($"{multNumber1} / {multNumber2} = ");
+                        Console.Write(calculator.Multiply(multNumOne, multNumTwo));
+                    }
+                    else
+                    {
+                        Console.WriteLine("One or more of the numbers is not an int");
+                    }
+
+                    /*int[] multNums = getNums();
+
+                    Console.Write($"{multNums[0]} * {multNums[1]} = ");
+                    Console.Write(calculator.Multiply(multNums[0], multNums[1]));*/
+
                     break;
 
                 case "4":
@@ -69,12 +104,42 @@ namespace KnowledgeCheck1_Calculator
                         Console.WriteLine("One or more of the numbers is not an int");
                     }
                     break;
+
+                    /*int[] divNums = getNums();
+
+                    double divNumOne = (double)divNums[0];
+                    double divNumTwo = (double)divNums[1];
+
+                    Console.Write($"{divNums[0]} / {divNums[1]} = ");
+                    Console.Write(calculator.Divide(divNumOne, divNumTwo));*/
+
                     break;
 
                 default:
                     Console.WriteLine("Unknown input");
                     break;
             }
+
+        }
+
+        public static int[] getNums()
+        {
+            int[] nums = new int[2];
+
+            var num1 = Console.ReadLine();
+            var num2 = Console.ReadLine();
+
+            if (int.TryParse(num1, out int numOne) && int.TryParse(num2, out int numTwo))
+            {
+                return nums;
+            }
+            else
+            {
+                Console.WriteLine("One or more of the numbers is not an int");
+                return null;
+            }
+
+            //return nums;
         }
     }
 }
